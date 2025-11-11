@@ -1,10 +1,10 @@
 export function getFinalState(baseState, queue) {
     let finalState = baseState;
-    for (let item in queue) {
-      if (typeof queue[item] === 'function') {
-        finalState = queue[item](finalState);
+    for (let item of queue) {
+      if (typeof item === 'function') {
+        finalState = item(finalState);
       } else {
-        finalState = queue[item];
+        finalState = item;
       }
     }
     return finalState;
